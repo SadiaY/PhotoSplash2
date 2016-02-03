@@ -1,7 +1,7 @@
 ﻿@{
     Layout = null;
 }
-
+@using login_signup.Models
 <!DOCTYPE html>
 
 <html>
@@ -15,10 +15,37 @@
 
     <div>
         <form action="/Admin/Upload" method="post" enctype="multipart/form-data">
-            <p>Category: <input type="text" name="category" /></p>
-            <p>Acess(private/Public): <input type="text" name="Access" /></p>
-            <p>Image: <input type="file" name="file" /></p>
-            <input type="submit" value="Upload" />
+
+            <div class="col-lg-2" >
+                Catagory :
+                <select class="form-control" name="category">
+                    @{
+                        foreach (Category c in Model)
+                        {
+                            <option value="@c.Name">@c.Name</option>
+                        }
+
+                    }
+
+                </select>
+
+                Access:
+                <select class="form-control" title="Access" name="Access">
+                    <option value="public">Public</option>
+                    <option value="public">Private</option>
+                </select>
+
+
+                <p>Image: <input type="file" name="file" /></p>
+                <input type="submit" value="Upload" />
+
+            </div>
+         
+
+
+               
+
+
         </form>
     </div>
 

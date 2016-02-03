@@ -1,4 +1,4 @@
-﻿
+﻿22
 @{
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
@@ -28,24 +28,21 @@
         <div class="panel panel-default" style="width: 400px; height: 250px; background-color: ghostwhite; border: groove; border-color: #009688; border-width: thick">
 
             <form action="/Home/upload" method="post" enctype="multipart/form-data"></br>
-                <p><strong>Category:</strong><input type="text" name="category" /></p>
+               @* <p><strong>Category:</strong><input type="text" name="category" /></p>*@
+                <select class="form-control" name="category">
+                    <option value="@Model.Name">@Model.Name</option>
+                </select>
 
-
-                @*Select Category:
-                <select id="CategorySelector">
-                    <option value="0">-Select- </option>
-                    <option value="car"> nature    </option>
-                    <option value="mobile"> Automobiles </option>
-                    <option value="car"> Artistic    </option>
-                    <option value="car"> Fashion    </option>
-                    <option value="car"> Food    </option>
-                    <option value="car"> Wildlife    </option>
-
-                </select>*@
                 <div id="d1"></div>
 
 
-                <p><strong>Acess(private/Public): </strong> <input type="text" name="Access" /></p>
+             @*  <p><strong>Acess(private/Public): </strong> <input type="text" name="Access" /></p>*@ 
+
+                <select class="form-control" name="Access">
+                    <option value="public">Public</option>
+                    <option value="public">Private</option>
+                </select>
+
                 <p><strong>Image: </strong><input type="file" name="file" /></p>
                 <input type="submit" value="Upload" />
             </form>

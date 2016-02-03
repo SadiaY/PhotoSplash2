@@ -17,6 +17,19 @@
     <script>
         $().ready(function () {
 
+            $('#t6').focusout(function () {
+                $('#passerror').empty();
+                if ($('#t6').val().toString() == $('#t5').val().toString()) {
+                    $('#passerror').append('<p style="color:green;" > Password matched </p>');
+                    $('#submit').removeAttr('disabled');
+                } else {
+                    $('#passerror').append('<p style="color:red;" > Password did not matched </p>');
+                    $('#submit').attr('disabled', "disabled");
+                   
+
+                }
+            
+            });
           
             $('#t1').focusout(function () {
                 $('#fnameerror').empty();
@@ -28,15 +41,20 @@
                     if(data == true)
                     {
                         $('#fnameerror').append('<p style="color:green;" > User Name Available </p>');
+                        $('#submit').removeAttr('disabled');
                     }else
                     {
                         $('#fnameerror').append('<p style="color:red;" > User Name Not Available </p>');
-                        $('#submit').addClass("btn-disable");
+                       
+                        $('#submit').attr('disabled', "disabled");
 
                     }
                 });
 
             });
+
+
+         
 
         });
     </script>
@@ -76,13 +94,13 @@
                         <div align="center" class="form-group">
                             <label class="control-label col-sm-2" for="Lname">LastName:</label>
                             <div class="col-xs-5">
-                                <input type="text" class="form-control" name="t2" placeholder="Enter Last Name"><br>
+                                <input type="text" class="form-control" id="t2" name="t2" placeholder="Enter Last Name"><br>
                             </div>
                         </div>
                         <div align="center" class="form-group">
                             <label class="control-label col-sm-2" for="Age">Age:</label>
                             <div class="col-xs-5">
-                                <input type="text" class="form-control" name="t3" placeholder="Enter Age">
+                                <input type="text" class="form-control" id="t3" name="t3" placeholder="Enter Age">
                             </div>
                         </div>
                         <div align="center" class="form-group">
@@ -95,14 +113,15 @@
                         <div align="center" class="form-group">
                             <label class="control-label col-sm-2" for="Password">Password:</label>
                             <div class="col-xs-5">
-                                <input type="password" class="form-control" name="t5" placeholder="Enter password">
+                                <input type="password" class="form-control" id="t5" name="t5" placeholder="Enter password">
                             </div>
                         </div>
 
                         <div align="center" class="form-group">
                             <label class="control-label col-sm-2" for="Cpassword">Confirm Password:</label>
                             <div class="col-xs-5">
-                                <input type="password" class="form-control" name="t6" placeholder="Enter password">
+                                <input type="password" class="form-control" id="t6" name="t6" placeholder="ReEnter password">
+                                <div id="passerror"></div>
                             </div>
                             @*<div class="radio">
                                 &nbsp; &nbsp; &nbsp;
@@ -131,7 +150,7 @@
                         <div class="form-group">
                             <div class="col-sm-offset-2 col-xs-5">
 
-                                <input type="submit" id="submit" value="Create Account" class="btn btn-success active" />
+                                <input type="submit" id="submit" value="Create Account" class="btn btn-success  active" />
                             </div>
 
                         </div>
